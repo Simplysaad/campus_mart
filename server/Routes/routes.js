@@ -1,30 +1,9 @@
-// "axios": "^1.7.7",
 
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
-const expressFileUpload = require("express-fileupload");
-const imgur = require("imgur");
-const multer = require("multer");
-const storage = multer.diskStorage({
-    destination: "./Public/Uploads/",
-    filename: function (req, file, cb) {
-        let myFileName =
-            Math.round(Math.random() * 100372600) +
-            "_" +
-            file.originalname +
-            "_" +
-            Date.now() +
-            ".jpg";
-        cb(null, myFileName);
-    }
-});
-const upload = multer({
-    storage: storage
-});
 
-const ObjectId = mongoose.Types.ObjectId;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const Product = require("../Models/Product.js");
 const User = require("../Models/User.js");
@@ -128,8 +107,6 @@ router.get("/preview/:id", async (req, res) => {
         res.status(500).send("Internal Server Error"); // Better error handling
     }
 });
-
-// ... rest of your code ...
 
 router.post("/search", async (req, res) => {
     try {

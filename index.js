@@ -54,6 +54,6 @@ app.use(express.urlencoded({ extended: true }));
 
 //ROUTING
 //app.use("/admin", require("./server/Routes/admin.js"));
-//app.use("/vendor", require("./server/Routes/vendor.js"));
+app.use("/vendor", require("./server/Routes/vendor.js"));
 app.use("/", require("./server/Routes/routes.js"));
 

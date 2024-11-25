@@ -1,7 +1,5 @@
-const express = require("express");
-const mongoose = require("mongoose");
+
 const jwt = require('jsonwebtoken')
-const user = require(".././server/models/User");
 
 const authMiddleware = (req, res, next) => {
     try {

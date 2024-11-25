@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+    <head>
+        <title><%= locals.title %></title>
+        <meta property="og:title" content="<%= locals.title%>" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="<%= locals.description%>" />
+        <meta property="og:description" content="<%= locals.description%>" />
+        <meta property="og:image" content="<%= locals.imageUrl%>" />
+        <meta charset="utf-8" />
+        <meta name="author" content="simplysaad" />
+        <link rel="stylesheet" href="/CSS/style.css" />
+        <link rel="icon" href="/IMG/favicon.png" type="image/x-icon" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
+    </head>
+    <body>
+        <main class="container">
+            <form
+                action="/register"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="name"
+                        id="username"
+                        placeholder="username"
+                    />
+                    <label for="username">Username</label>
+                </div>
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        type="email"
+                        name="emailAddress"
+                        id="emailAddress"
+                        placeholder="email Address"
+                    />
+                    <label for="emailAddress">Email Address</label>
+                </div>
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="password"
+                    />
+                    <label for="password">Password</label>
+                </div>
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        type="password"
+                        name="confirmPassword"
+                        id="confirmPassword"
+                        placeholder="confirmPassword"
+                    />
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
+                <input type="file">
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        type="file"
+                        accept=".jpg"
+                        name="businessLogo"
+                        id="businessLogo"
+                        placeholder="business Logo"
+                    />
+                    <label for="businessLogo">your Business Logo</label>
+                </div>
+                <div class="form-floating">
+                    <input
+                        class="form-control"
+                        type="tel"
+                        name="phoneNumber"
+                        id="phoneNumber"
+                        placeholder="phoneNumber"
+                    />
+                    <label for="phoneNumber">Phone Number</label>
+                </div>
+                <div class="form-text col-12">
+                  <label for="businessDesc">Business Description</label>
+                    <textarea
+                        class="col-12"
+                        type="text"
+                        name="businessDesc"
+                        id="businessDesc"
+                        maxlength="200"
+                        rows="5"
+                        placeholder="Tell us a little bit about your Business"
+                    ></textarea>
+                </div>
+            </form>
+        </main>
+
+        <script src="/JS/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.js"></script>
+    </body>
+</html>
