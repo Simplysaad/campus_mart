@@ -10,12 +10,20 @@ const Review = require("../Models/Review.js");
 
 const { relatedProductsFunc } = require("../Utils/helper.js");
 
+
+var searchSuggestions
+Search.find({}, { searchTerm: 1 }).then(data => searchSuggestions = data)
+
 const locals = {
   title: "Campus Mart",
   description:
     "an incampus shopping website for school online vendors and students, to buy , sell and deliver items without hassle",
-  imageUrl: "/IMG/favicon.png"
+  imageUrl: "/IMG/favicon.png",
+  searchSuggestions
 };
+
+
+
 
 const ads = [
   {
