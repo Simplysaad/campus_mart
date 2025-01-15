@@ -15,5 +15,31 @@ const reviewSchema = {
   }
 }
 
+
+
+
+// router.post("/search", async (req, res) => {
+//   let { searchTerm } = req.body
+// 
+//   let regex = new RegExp(searchTerm, gi)
+//   const searchResults = product.find({
+//     $or: [
+//       { name: regex },
+//       { description: regex },
+//       { tags: regex }
+//     ]
+//   },
+//     {
+//       name: 1,
+//       price: 1,
+//       previewCount: -1
+//     })
+// 
+// const newSearch = new Search({
+//   searchTerm, 
+//   searchResults
+// })
+// 
+// })
 const  Review = new mongoose.model("Review", reviewSchema);
 module.exports = Review;
