@@ -80,7 +80,8 @@ const ProductSchema = new mongoose.Schema({
     updatedAt: {
         type: Date,
         default: Date.now
-    }
+    },
+    previewCount: Number
 });
 
 const Product = new mongoose.model("Product", ProductSchema);
