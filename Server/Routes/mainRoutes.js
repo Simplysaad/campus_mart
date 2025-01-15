@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const Product = require("../Models/Product.js");
 const User = require("../Models/User.js");
 const Order = require("../Models/Order.js");
+const Search = require("../Models/Search.js");
+const Review = require("../Models/Review.js");
 
 const { relatedProductsFunc } = require("../Utils/helper.js");
 
@@ -116,7 +118,8 @@ router.post("/search", async (req, res) => {
     const relatedProducts = relatedProductsFunc(allProducts, 18);
     const categories = await Product.distinct("category");
 
-    const searchTerm = req.body.searchTerm.trim() || req.query.searchTerm;
+    const symbols = /[</>&;//]/gi
+    const searchTerm = req.body.searchTerm.replace(symbols, " ").trim() || req.query.searchTerm;
     let regex = new RegExp(searchTerm, "gi");
 
     const searchResults = await Product.find({
@@ -127,8 +130,20 @@ router.post("/search", async (req, res) => {
         { category: regex },
         { subCategory: regex }
       ]
+    }, {
+      name: 1,
+      price: 1,
+      previewCount: -1
     });
 
+    const newSearch = new Search({
+      searchTerm,
+      searchResults
+    })
+
+    await newSearch.save().then(() => {
+      console.log("search data saved")
+    })
     // const searchResults = await Product.find({
     //     $text: {
     //         $search: searchTerm
