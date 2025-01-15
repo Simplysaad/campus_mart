@@ -99,6 +99,13 @@ router.get("/preview/:id", async (req, res) => {
       throw new Error("No product matches that ID"); // Explicit error for debugging
     }
 
+    await Product.updateOne(currentProduct, {
+      $inc: {
+        previewCount: 1
+      }
+    })
+
+
     res.render("Pages/preview", {
       locals,
       currentProduct,
