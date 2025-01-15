@@ -179,6 +179,7 @@ router.get("/cart", async (req, res) => {
         );
         console.log("CART_TOTAL", CART_TOTAL);
         //res.json({ CART_TOTAL, cart: req.session.cart });
+       let isCartEmpty;
         if (req.session.cart.length === 0) {
             isCartEmpty = true;
         } else {
