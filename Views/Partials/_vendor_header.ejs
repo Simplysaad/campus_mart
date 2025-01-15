@@ -21,10 +21,14 @@
   </div>
   <div class="search-container col-12 px-3">
     <form action="/search" method="post" class="input-group">
-      <input class="form-control search-input placeholder-glow" type="search"
-                                                                                                                              placeholder="Search for products, categorys and keywords">
+      <input list="searchSuggestions" class="form-control search-input placeholder-glow" type="search" placeholder="Search for products, categorys and keywords">
       <button class="btn btn-search btn-success">Go</button>
     </form>
+  <datalist id="searchSuggestions">
+    <% locals.searchSuggestions.forEach(term => { %>
+      <option value="<%= term %>"></option>
+   <% })%>
+  </datalist>
   </div>
   
 </header>
