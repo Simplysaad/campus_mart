@@ -1,0 +1,45 @@
+<section class="product-list my-5">
+  <div class="table-heading py-4 top-0 position-relative">
+    <h3 class="display-6">Top Products this month</h3>
+  </div>
+  <div class="product-table-container overflow-scroll">
+    <table class="table table-hover overflow-scroll text-nowrap table-striped">
+      <thead>
+        <tr>
+          <th>S/N</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Sold</th>
+          <th>Amount</th>
+          <th>Remaining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% currentUserProducts.forEach(product=>{ %>
+          <tr>
+            <td>
+              <% currentUserProducts.indexOf(product) + 1 %>
+            </td>
+            <td>
+              <a class="text-decoration-none" href="/preview/<%= product._id%>">
+                <%= product.name %>
+              </a>
+            </td>
+            <td>
+              <%= product.price %>
+            </td>
+            <td>
+              <%= product.amountSold * product.price %>
+            </td>
+            <td>
+              <%= product.amountSold %>
+            </td>
+            <td>
+              <%= product.amountInStock %>
+            </td>
+          </tr>
+          <% })%>
+      </tbody>
+    </table>
+  </div>
+</section>
