@@ -1,208 +1,133 @@
-<form
-    action="/vendor/add-product"
-    method="post"
-    enctype="multipart/form-data"
-    class="form-card col-md-8 my-5 col-lg-7"
->
-    <section id="addProduct" class="p-2 p-md-3 border d-nne my-5">
-        <div
-            class="text-center my-5 justify-content-between align-items-center d-md-flex"
-        >
-            <h3 class="display-5 text-md-start text-center p-2">
-                <i class="fa fa-store pe-3"></i>Edit Product
-            </h3>
-
-            <div class="btn-group text-md-end d-none d-md-inline-flex col-md-4">
-                <a class="btn mx- btn-outline-danger">Discard changes</a>
-                <button class="btn mx- btn-success">Add Product</button>
-            </div>
-        </div>
-
-        <section id="generalInfo" class="my-5 mt-3">
-            <h3 class="my-2 display-6">General Information</h3>
-
-            <div class="for-floating my-3">
-                <label for="productName" class="text-muted">
-                    Product Name
-                </label>
-                <input
-                    class="form-control p-3"
-                    id="productName"
-                    name="productName"
-                    type="text"
-                    required
-                    placeholder=""
-                />
-            </div>
-            <div class="my-3">
-                <label for="productDesc" class="text-muted">
-                    Product Description
-                </label>
-                <textarea
-                    class="form-control p-3"
-                    id="productDesc"
-                    name="description"
-                    type="text"
-                    required
-                    cols="20"
-                    rows="5"
-                    placeholder=""
-                ></textarea>
-            </div>
-            <div class="my-3">
-                <label for="productName" class="text-muted"> Brand Name </label>
-                <input
-                    class="form-control p-3"
-                    id="brand"
-                    name="brand"
-                    type="text"
-                    placeholder=""
-                />
-            </div>
-
-            <div class="my-3">
-                <label for="productTags" class="text-muted"
-                    >Tags(<i>separate tags with commas</i>)</label
-                >
-                <input
-                    class="form-control p-3"
-                    id="productTags"
-                    name="productTags"
-                    type="text"
-                    required
-                    placeholder=""
-                />
-            </div>
-        </section>
-        <section id="pricingAndStock" class="my-5">
-            <h3 class="my-2 display-6">Pricing and Stock</h3>
-
-            <div class="my-3">
-                <label for="price" class="text-muted"> Base Price </label>
-                <input
-                    class="form-control p-3"
-                    id="price"
-                    name="basePrice"
-                    type="number"
-                    min="100"
-                    required
-                    placeholder=""
-                />
-            </div>
-            <div class="my-3">
-                <label for="discount" class="text-muted"> Discount % </label>
-                <input
-                    class="form-control p-3"
-                    id="discount"
-                    name="discount"
-                    type="number"
-                    max="100"
-                    min="1"
-                    placeholder=""
-                />
-            </div>
-            <div class="my-3">
-                <label for="discountType" class="text-muted">
-                    Discount type
-                </label>
-                <input
-                    class="form-control p-3"
-                    id="discountType"
-                    name="discountType"
-                    type="text"
-                    placeholder=""
-                />
-            </div>
-            <div class="">
-                <label for="amountInStock" class="text-muted">
-                    Amount In Stock
-                </label>
-                <input
-                    class="form-control p-3"
-                    id="amountInStock"
-                    name="amountInStock"
-                    type="number"
-                    min="1"
-                    required
-                    placeholder=""
-                />
-            </div>
-        </section>
-        <section id="ImageAndCategory" class="my-5">
-            <h3 class="my-2 display-6">Add Image</h3>
-
-            <div class="my-3">
-                <label for="productImage" class="text-muted"
-                    >Product Image</label
-                >
-                <input
-                    class="form-control p-3"
-                    id="productImage"
-                    name="productImage"
-                    type="file"
-                    accept="image/*"
-                    required
-                    placeholder=""
-                />
-            </div>
-            <!--         <div class="">
-    <input
-        class="form-control"
-        id="productGallery"
-        name="productGallery"
-        type="file"
-        accept="image/*"
-        multiple
-        placeholder=""
-    />
-    <label for="productGallery">Product Gallery</label>
-</div>
+<section id="viewProduct" class="">
+  <!-- A Vendor clicks on a single product to see all information about the products like;
+  * the product name ✓
+  * amount sold ✓
+  * amount remaining ✓
+  * revenue generated by this product ✓
+  * product that is mostly bought together with it ✓
+  * location of most people that buy it
+  * sales growth this month and last
+  
+  
+  ** This section has two buttons; edit and delete
  -->
-            <div class="my-3">
-                <label ="category" class="text-muted">Category</label>
-                <input
-                    class="form-control p-3"
-                    id="category"
-                    name="category"
-                    type="text"
-                    required
-                    placeholder=""
-                    list="categoryList"
-                />
-                <datalist id="categoryList">
-                    <% categories.forEach(category =>{ %>
-                    <option value="<%=category %>"><%#=category %></option>
-                    <% }) %>
-                </datalist>
-            </div>
-            <div class="my-3">
-                <label for="subCategory" class="text-muted">Sub-category</label>
-                <input
-                    class="form-control p-3"
-                    id="subCategory"
-                    name="subCategory"
-                    type="text"
-                    required
-                    placeholder=""
-                    list="subCategoryList"
-                />
-                <datalist id="subCategoryList">
-                    <% subCategories.forEach(category =>{ %>
-                    <option value="<%=category %>"><%=category %></option>
-                    <% }) %>
-                </datalist>
-            </div>
-        </section>
-
-        <div
-            class="text-end my-5 justify-content-end align-items-center d-md-none d-flex"
-        >
-            <div class="btn-grup col-md-5">
-                <button type="reset" class="btn mx-2 btn-outline-danger">
-                    Discard changes
-                </button>
-                <button class="btn mx-2 btn-success">Add Product</button>
-            </div>
+  <button class="float-end my-5 btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDelete">
+    <i class="fa fa-light fa-trash"></i>
+    Remove Product
+  </button>
+  
+  <form action="/edit-product/<%= currentProduct._id %>" method="PATCH" id="productInfo">
+    <div id="productImage">
+      
+      <figure id="productImageOutput"
+                                                                                                                              class="d-flex output-element justify-content-center my-5 mb-3 border border-1 w-100">
+        <img src="https://via.placeholder.com/300" alt="image" />
+      </figure>
+      
+      <div class="edit-input">
+        <label class="d-block" for="productImageInput">
+          <img id="productImageLabel" src="https://via.placeholder.com/300" alt="image" />
+        </label>
+        <input id="productImageInput" type="file" accept="image" hidden>
+      </div>
+    </div>
+    
+    <div class="product-name my-3">
+      <a id="editName" class="p-1 float-end fs-6 fa fa-edit btn-edit text-success"></a>
+      <h3 id="nameOutput" class="output-element display-3">
+        <%= currentProduct.name %>
+      </h3>
+      
+      <div class="edit-input">
+        <input id="nameInput" class="input-element form-control" name="productName" value="<%= currentProduct.name %>">
+        <button class="btn my-3  btn-save btn-outline-success text-end">Save Changes</button>
+      </div>
+    </div>
+    <div class="product-desc my-4">
+      <a id="editDescription" class="p-1 float-end fs-6 fa fa-edit btn-edit text-success"></a>
+      <h6 class="display-6">Product description</h6>
+      <p id="descOutput" class="output-element fs-6">
+        <%= currentProduct.description %>
+      </p>
+      <div class="edit-input">
+        
+        <textarea id="descInput" class="input-element text-start form-text form-control" rows="5" name="description">
+        <%= currentProduct.description %>
+       </textarea>
+        <button class="btn my-3 btn-save btn-outline-success text-end">Save Changes</button>
+      </div>
+    </div>
+    <div class="product-amount my-3 text-center p-5">
+      <a id="editQuantity" class="p-1 btn-edit float-end fs-6 fa fa-edit text-success"></a>
+      <div class="text-heading">
+        <h6 class="my-0 p-0 display-6">Product Quantity</h6>
+        <p class="fs-6 my-0 p-0 fw-light text-muted">in stock</p>
+      </div>
+      <div class="d-flex my-3 justify-content-between">
+        <div class="quantity-sold align-items-baseline d-flex">
+          <span class="text-success fs-6">
+            <%= currentProduct.amountSold %> sold
+          </span>
+          <i class="fa fa-arrow-up fa-3x text-success"></i>
         </div>
-    </section>
-</form>
+        <div class="quantity-remaining justify-content-between align-items-baseline d-flex">
+          <i class="fa fa-arrow-down fa-3x text-danger"></i>
+          <span class=" text-danger fs-6"> <i class="output-element">
+              <%= currentProduct.amountInStock %>
+            </i> remaining</span>
+        </div>
+      </div>
+      <div class="edit-input">
+        <input value="<%= currentProduct.amountInStock %>" class="input-element form-control col-4" type="number">
+        <button class="btn my-3 btn-save btn-outline-success text-end">Save Changes</button>
+      </div>
+      
+      <p class="text-muted mt-5">six times more than last month</p>
+    </div>
+  </form>
+  <div class="product-card product-chart">
+    <canvas id="salesChart"></canvas>
+  </div>
+  <div class="product-revenue text-center p-5">
+    <div class="text-heading">
+      <h6 class="my-0 p-0 display-6">Generated Revenue</h6>
+      <p class="fs-6 my-0 p-0 fw-light text-muted">by this product</p>
+    </div>
+    <h4 class="display-2 my-4">
+      <sup class="fs-6 p-0 fw-light algn-top">₦</sup>
+      <%= currentProduct.generatedRevenue %>
+    </h4>
+  </div>
+  <% if (currentProduct.isMostSold){ %>
+    <div class="product-badge text-center p-5">
+      <div class="text-heading">
+        <h6 class="my-0 p-0 display-6">Most Sold Product</h6>
+        <p class="fs-6 my-0 p-0 fw-light text-muted">by you; this month</p>
+      </div>
+      <h4 class="display-2 my-4">
+        <i class="text-warning fa-3x fa-beat fas fa-trophy"></i>
+      </h4>
+    </div>
+    <% } %>
+      
+      <% if(currentProduct.composite){%>
+        <div class="product-composite text-center">
+          <div class="text-heading">
+            <h6 class="my-0 p-0 display-6">Several People Also Bought</h6>
+            <p class="fs-6 my-0 p-0 fw-light text-muted">alongside this product</p>
+          </div>
+          <div class="border border-1 d-flex justify-content-center my-4 mb-2 w-100">
+            <img src="https://via.placeholder.com/200" class="m-auto" alt="image">
+          </div>
+          <div class="product-info text-center">
+            <p class="fs-4 mb-0">
+              <%= currentProduct.composite.name %>
+            </p>
+            <a class="mb-4 mt-0 fs-6 text-decoration-underline"
+                                                                                                                                    href="/preview/<%= currentProduct.composite._id %>">Learn
+              more</a>
+          </div>
+        </div>
+        <% } %>
+          
+</section>
